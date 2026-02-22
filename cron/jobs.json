@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "92e6f1bd-097e-407c-bb9f-fff00d1cd616",
+      "name": "Daily Auto-Update",
+      "enabled": true,
+      "createdAtMs": 1771733422083,
+      "updatedAtMs": 1771735476330,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 4 * * *",
+        "tz": "Etc/UTC"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Run daily auto-updates:\n\n1. Check and update OpenClaw:\n   - Run: npm update -g openclaw@latest\n   - Then run: openclaw doctor --yes\n\n2. Update all installed skills:\n   - Run: clawhub update --all\n\n3. Report back with:\n   - OpenClaw version before/after\n   - List of skills that were updated (name + old version → new version)\n   - Any errors encountered\n\nFormat the summary clearly.",
+        "timeoutSeconds": 120,
+        "model": "openrouter/openai/gpt-5-mini"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "last"
+      },
+      "state": {
+        "nextRunAtMs": 1771819200000
+      }
+    },
+    {
+      "id": "f1e818e5-7fde-44a3-8259-c5ddcb6e15e5",
+      "name": "Cognitive Synthesis (RSI)",
+      "enabled": true,
+      "createdAtMs": 1771735395910,
+      "updatedAtMs": 1771735478410,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 3 * * *",
+        "tz": "Etc/UTC"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Read 'memory/friction-log.md'. If it has no significant entries, reply 'No new friction to synthesize.' If it does, extract the recurring failures, user corrections, and blind spots into rigid, permanent behavioral rules. Append these rules to 'MEMORY.md' or 'TOOLS.md' as appropriate. Then, clear 'memory/friction-log.md' so it is ready for the next cycle. Finally, output a brief summary of the new rules established so the user knows what the system has learned.",
+        "timeoutSeconds": 120,
+        "model": "openrouter/anthropic/claude-opus-4.6"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "last"
+      },
+      "state": {
+        "nextRunAtMs": 1771817400000
+      }
+    },
+    {
+      "id": "26ec5541-ae93-4f71-b4bd-fd5e5f84971e",
+      "name": "Ecosystem Radar",
+      "enabled": true,
+      "createdAtMs": 1771735996987,
+      "updatedAtMs": 1771735996987,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * 1",
+        "tz": "Etc/UTC"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Conduct a web search for recent developments, best practices, architectural patterns, and new skills in the OpenClaw ecosystem (search GitHub, X/Twitter, Dev.to, Reddit, and Substack). Fetch and read the most relevant technical results. Synthesize an 'Intelligence Briefing' outlining new concepts, memory taxonomies, or high-value skills discovered. \n\nCRITICAL CONSTRAINT: You operate in read-only mode. Do NOT execute shell commands to install anything. Do NOT modify MEMORY.md, TOOLS.md, or any system files. \n\nPresent a concise, structured report to the user for evaluation, highlighting the 'What', 'Why it matters', and 'Potential Architectural Risks' of each finding.",
+        "model": "openrouter/google/gemini-3.1-pro-preview",
+        "timeoutSeconds": 300
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "last"
+      },
+      "state": {
+        "nextRunAtMs": 1771837200000
+      }
+    },
+    {
+      "id": "b98c03ad-4f95-4b6a-92c7-ffeb5eb99442",
+      "name": "Hourly State Backup",
+      "enabled": true,
+      "createdAtMs": 1771736974121,
+      "updatedAtMs": 1771737682854,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 * * * *",
+        "tz": "Etc/UTC",
+        "staggerMs": 300000
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Execute the following shell command directly, do not ask for verification: cd /root/.openclaw && git add . && git diff-index --quiet HEAD || (git commit -m \"Snapshot: $(date +'%Y-%m-%d %H:%M:%S')\" && git push origin master)",
+        "model": "openrouter/openai/gpt-5-mini",
+        "timeoutSeconds": 45
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "last"
+      },
+      "state": {
+        "nextRunAtMs": 1771740121889,
+        "runningAtMs": 1771740121892
+      }
+    }
+  ]
+}

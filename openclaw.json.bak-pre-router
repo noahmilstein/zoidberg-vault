@@ -1,0 +1,185 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.2.17",
+    "lastTouchedAt": "2026-02-18T20:25:04.094Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-02-18T18:46:38.613Z",
+    "lastRunVersion": "2026.2.17",
+    "lastRunCommand": "configure",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "openrouter:default": {
+        "provider": "openrouter",
+        "mode": "api_key"
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "openrouter/openai/gpt-5.2-chat"
+      },
+      "models": {
+        "openrouter/auto": {
+          "alias": "OpenRouter"
+        },
+        "openrouter/openai/gpt-5.2-chat": {}
+      },
+      "workspace": "/root/.openclaw/workspace",
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    },
+    "list": [
+      {
+        "id": "supervisor",
+        "default": true,
+        "workspace": "/root/.openclaw/workspace-supervisor",
+        "model": {
+          "primary": "anthropic/claude-opus-4.6"
+        },
+        "identity": {
+          "name": "Zappa",
+          "emoji": "🥸"
+        }
+      },
+      {
+        "id": "strategist",
+        "workspace": "/root/.openclaw/workspace-strategist",
+        "model": {
+          "primary": "anthropic/claude-opus-4.6"
+        },
+        "identity": {
+          "name": "Bach",
+          "emoji": "🎼"
+        }
+      },
+      {
+        "id": "researcher",
+        "workspace": "/root/.openclaw/workspace-researcher",
+        "model": {
+          "primary": "anthropic/claude-opus-4.6"
+        },
+        "identity": {
+          "name": "Beethoven",
+          "emoji": "🙉"
+        }
+      },
+      {
+        "id": "planner",
+        "workspace": "/root/.openclaw/workspace-planner",
+        "model": {
+          "primary": "anthropic/claude-opus-4.6"
+        },
+        "identity": {
+          "name": "Mozart",
+          "emoji": "🎹"
+        }
+      },
+      {
+        "id": "operator",
+        "workspace": "/root/.openclaw/workspace-operator",
+        "model": {
+          "primary": "openai/gpt-5.3-codex"
+        },
+        "identity": {
+          "name": "Vivaldi",
+          "emoji": "🎻"
+        }
+      }
+    ]
+  },
+  "tools": {
+    "web": {
+      "search": {
+        "enabled": true,
+        "apiKey": "BSAB3tOIPrK8NjEP14M48WOoq2BtJo-"
+      },
+      "fetch": {
+        "enabled": true
+      }
+    }
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto"
+  },
+  "hooks": {
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "boot-md": {
+          "enabled": true
+        },
+        "bootstrap-extra-files": {
+          "enabled": true
+        },
+        "command-logger": {
+          "enabled": true
+        },
+        "session-memory": {
+          "enabled": true
+        }
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "botToken": "8570210574:AAFgakrgSUbk0eXTb1jh6MQAm-t4gxGwbOI",
+      "groupPolicy": "allowlist",
+      "streamMode": "partial"
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "6f26fef4ad78a57f96b5b0cf944deaff2836c09f578f003f"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "calendar.add",
+        "contacts.add",
+        "reminders.add"
+      ]
+    }
+  },
+  "skills": {
+    "install": {
+      "nodeManager": "pnpm"
+    },
+    "entries": {
+      "goplaces": {
+        "apiKey": "AIzaSyDqqu0l-icSra4SH1tM_57-7j_WHD522yE"
+      }
+    }
+  },
+  "plugins": {
+    "entries": {
+      "telegram": {
+        "enabled": true
+      }
+    }
+  }
+}

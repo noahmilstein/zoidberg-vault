@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "profiles": {
+    "openrouter:default": {
+      "type": "api_key",
+      "provider": "openrouter",
+      "key": "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"
+    }
+  },
+  "lastGood": {
+    "openrouter": "openrouter:default"
+  },
+  "usageStats": {
+    "openrouter:default": {
+      "lastUsed": 1771622134177,
+      "errorCount": 0
+    }
+  }
+}
