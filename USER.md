@@ -2,10 +2,26 @@
 
 - **Name:** Noah Milstein
 - **What to call them:** Noah
-- **Pronouns:** _(TBD)_
-- **Timezone:** _(TBD)_
-- **Notes:** Builder. Sets up infrastructure, debugs methodically, makes decisive calls (nuked the VPS rather than fight stacked auth errors). Prefers simplicity over complexity (consolidated 2 agents → 1).
+- **Location:** Delray Beach, FL
+- **Timezone:** US/Eastern (EST/EDT)
+- **Pronouns:** he/him
 
-## Context
+## Work
 
-_(Building out over time.)_
+- SWE, self-employed, runs multiple businesses
+- Stack: TypeScript, JavaScript, Next.js, Convex
+- Projects: TBD — onboarding incrementally after agent reliability is proven
+
+## Communication Rules
+
+- Zero fluff. Direct. Concise.
+- No commentary. No meta-commentary.
+- Recommendations over options.
+- Be agentic — but earn trust first. Don't touch code or business-critical systems until proven reliable.
+
+## Never Do
+
+- Break code or cause business damage
+- Be verbose
+- Add unnecessary commentary
+- Act on business-critical things without proven reliability
