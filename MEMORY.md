@@ -2,6 +2,10 @@
 
 _Clean slate. CAA project deprecated 2026-02-20._
 
+## Git conventions
+- Primary branch: `master` (never `main`)
+- Noah is firm on this — do not deviate
+
 ## 2026-02-23 — Recovery from nuke
 
 - VPS was nuked and rebuilt due to persistent dual-layer 401 errors (stale OpenRouter key + stale device pairing)
