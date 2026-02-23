@@ -1,40 +1,30 @@
 # TOOLS.md - Local Notes
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+## Host
 
-## What Goes Here
+- **Hostname:** zoidberg-crab-shell
+- **OS:** Ubuntu 24.04.3 LTS (x86_64, kernel 6.8.0-90)
+- **IP:** 46.225.127.41
+- **Disk:** 75G total, ~68G free
+- **Node:** v22.22.0
+- **OpenClaw:** v2026.2.21-2 (systemd user service)
 
-Things like:
+## SSH
 
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
+- **Key:** ~/.ssh/id_ed25519 (ed25519, `openclaw@zoidberg`)
+- **GitHub deploy key** on noahmilstein/zoidberg-vault (read/write)
 
-## Examples
+## Git
 
-```markdown
-### Cameras
+- **Workspace repo:** git@github.com:noahmilstein/zoidberg-vault.git
+- **Git identity:** Zoidberg <openclaw@zoidberg>
 
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
+## Installed
 
-### SSH
+- git, node, npm, curl, wget, python3
+- **Missing:** pnpm (config references it but not installed), trash-cli
 
-- home-server → 192.168.1.100, user: admin
+## Services
 
-### TTS
-
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
-```
-
-## Why Separate?
-
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
-
----
-
-Add whatever helps you do your job. This is your cheat sheet.
+- openclaw-gateway (systemd user, active)
+- gpg-agent
