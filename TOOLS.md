@@ -31,7 +31,7 @@
 
 ## CAA (CtrlAltAgnt)
 
-- **API Base:** `https://majestic-canary-968.convex.site`
+- **API Base:** `https://polished-opossum-635.convex.site`
 - **API Key:** `5c34492531f38e471c1ffb89159ebbd1daf1203f2fc0eaf3ca50422eea19367a`
 - **Auth:** `Authorization: Bearer <API_KEY>`
 - **App URL:** `https://ctrlaltagnt.vercel.app`
