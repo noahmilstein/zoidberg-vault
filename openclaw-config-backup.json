@@ -1,0 +1,157 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.2.21-2",
+    "lastTouchedAt": "2026-02-23T04:13:52.255Z"
+  },
+  "env": {
+    "OPENROUTER_API_KEY": "REDACTED"
+  },
+  "wizard": {
+    "lastRunAt": "2026-02-23T00:53:05.817Z",
+    "lastRunVersion": "2026.2.21-2",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "openrouter:default": {
+        "provider": "openrouter",
+        "mode": "api_key"
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "openrouter/anthropic/claude-opus-4.6"
+      },
+      "models": {
+        "openrouter/auto": {
+          "alias": "OpenRouter"
+        },
+        "openrouter/openai/gpt-5.2-chat": {},
+        "openrouter/anthropic/claude-opus-4.6": {},
+        "openrouter/openai/gpt-5.2-pro": {},
+        "openrouter/openai/gpt-5-mini": {},
+        "openrouter/google/gemini-3.1-pro-preview": {}
+      },
+      "workspace": "/root/.openclaw/workspace",
+      "memorySearch": {
+        "experimental": {
+          "sessionMemory": true
+        },
+        "provider": "openai",
+        "remote": {
+          "apiKey": "REDACTED"
+        },
+        "model": "text-embedding-3-small",
+        "query": {
+          "hybrid": {
+            "enabled": true,
+            "vectorWeight": 0.7,
+            "textWeight": 0.3,
+            "candidateMultiplier": 4,
+            "mmr": {
+              "enabled": true,
+              "lambda": 0.7
+            },
+            "temporalDecay": {
+              "enabled": true,
+              "halfLifeDays": 30
+            }
+          }
+        }
+      },
+      "compaction": {
+        "mode": "safeguard",
+        "memoryFlush": {
+          "enabled": true
+        }
+      },
+      "heartbeat": {
+        "model": "openrouter/openai/gpt-5-mini"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8,
+        "model": "openrouter/openai/gpt-5-mini"
+      }
+    }
+  },
+  "tools": {
+    "web": {
+      "search": {
+        "enabled": true,
+        "apiKey": "REDACTED"
+      },
+      "fetch": {
+        "enabled": true
+      }
+    }
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "hooks": {
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "boot-md": {
+          "enabled": true
+        },
+        "bootstrap-extra-files": {
+          "enabled": true
+        },
+        "command-logger": {
+          "enabled": true
+        },
+        "session-memory": {
+          "enabled": true
+        }
+      }
+    }
+  },
+  "channels": {},
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "REDACTED"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "calendar.add",
+        "contacts.add",
+        "reminders.add"
+      ]
+    }
+  },
+  "skills": {
+    "install": {
+      "nodeManager": "pnpm"
+    },
+    "entries": {
+      "goplaces": {
+        "apiKey": "REDACTED"
+      }
+    }
+  },
+  "plugins": {
+    "entries": {}
+  }
+}
