@@ -55,4 +55,18 @@ When creating/updating tasks, always include:
 - `actorId: "zappa"`
 - `projectId` (required) — use the appropriate project ID:
   - CtrlAltAgnt: `kx7cp2zp6ha3y7f1g1fy6e9h5181rfks`
-  - OpenClaw: `kx7d7cqw7qpsgkdkzfcce4g0tn81r7eb`
+  - Zoidberg (OpenClaw instance): `kx7d7cqw7qpsgkdkzfcce4g0tn81r7eb`
+  - Simply Sauna: `kx7apcfhbenk5sq1gxfw0j722n81r2g3`
+
+## Simply Sauna
+
+- **Repo:** `git@github.com:noahmilstein/simply-sauna-v3.git` (SSH: `github.com-simplysauna`, key: `~/.ssh/id_ed25519_simplysauna`, read-only deploy key named `zappa-read-only-simply-sauna-key`)
+- **Stack:** Next.js (App Router) + Convex + Tailwind v4 + shadcn/ui + Stripe + Twilio + Mailgun + Google Maps
+- **HQ:** Bedminster, NJ (07931), 60-mile service radius, NYC boroughs excluded
+- **Pricing:** Day 1 = $650, additional days = $250/day; delivery ≤20mi free, 21-60mi $200
+- **Business model:** Mobile sauna rentals (core) + sauna sales/install (quote-based)
+- **Admin:** Auth-protected dashboard at `/admin` — reservations, calendar, CRM, leads, invoices, orders, blog, gallery, products, settings
+- **CRM:** Built-in lightweight CRM with contacts, tags, smart lists, sequences, bulk sends, email templates, tasks, call logging (Vapi), Meta lead ads integration
+- **Integrations:** Stripe (auth+capture), Twilio (SMS), Mailgun (email+bounces), Google Places, Meta Lead Ads, Vapi AI voice
+- **Docs in repo:** `docs/PRD.md`, `docs/roadmap-*.md`, `docs/specs/feat_*.md`, `docs/design-style-guide.md`, `docs/THEME.md`
+- **Local clone:** `/tmp/simply-sauna-v3` (shallow, refresh with git pull as needed)

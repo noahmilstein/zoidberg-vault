@@ -11,3 +11,13 @@ Guidance:
 Notes:
 - Author: OpenClaw agent (Zappa)
 - Date: 2026-02-24
+
+## Deploy Key: zappa-read-only-simply-sauna-key
+- Deploy key name: zappa-read-only-simply-sauna-key
+- Purpose: Read-only access to Simply Sauna repos for git fetch/pull from OpenClaw host
+- Key location (private): /root/.ssh/id_ed25519_simplysauna (private)
+- Public key: /root/.ssh/id_ed25519_simplysauna.pub
+- Access control: GitHub Deploy Key added with read-only permissions
+- Rotation/maintenance: consider rotating every 90-180 days; align with key-management policy
+- Owner: OpenClaw agent (Zappa)
+- Status: recorded for onboarding traceability
