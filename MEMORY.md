@@ -14,3 +14,27 @@ _Clean slate. CAA project deprecated 2026-02-20._
 - Zappa's SOUL.md preserved as foundation — to be evolved from governance-only into a full assistant persona
 - Telegram channel deprecated and removed
 - SECURITY.md sandbox directives carried forward
+
+## CAA Workflow Rules (MANDATORY — Noah was firm about this repeatedly on 2026-02-23/24)
+
+### Ticket State Management
+- **Ticket state changes are the FIRST action, not an afterthought.**
+- Before spawning a sub-agent: move ticket to `in_progress` FIRST, then spawn.
+- When a sub-agent completes: move ticket to `done` FIRST, then report/continue.
+- NEVER let ticket state drift. If a sub-agent is done, the ticket is done. Period.
+
+### Pipeline Continuity
+- **NEVER stop mid-queue.** When a sub-agent completes and there are remaining backlog tickets:
+  1. Update completed ticket to `done`
+  2. Move next ticket to `in_progress`
+  3. Spawn next sub-agent
+  4. Send Slack status update (non-blocking — do NOT wait for response)
+- Do NOT treat completion announcements as "pause and wait for human input."
+- Only stop the pipeline if: (a) you need input/credentials from Noah, (b) all tickets are done, or (c) a failure requires human decision.
+
+### Reporting
+- Status updates to Noah via Slack are fire-and-forget. Send them, keep working.
+- If Noah asks "status?" it means you failed to keep him informed. Proactively update.
+
+### Why This Matters
+- Noah had to prompt me 4+ times on 2026-02-23/24 to resume work and update tickets. This is unacceptable. These rules exist to prevent that from ever happening again.
