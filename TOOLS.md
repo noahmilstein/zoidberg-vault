@@ -53,3 +53,6 @@
 When creating/updating tasks, always include:
 - `actorType: "agent"`
 - `actorId: "zappa"`
+- `projectId` (required) — use the appropriate project ID:
+  - CtrlAltAgnt: `kx7cp2zp6ha3y7f1g1fy6e9h5181rfks`
+  - OpenClaw: `kx7d7cqw7qpsgkdkzfcce4g0tn81r7eb`
