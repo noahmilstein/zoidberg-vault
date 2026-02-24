@@ -44,6 +44,17 @@ _Clean slate. CAA project deprecated 2026-02-20._
 - On 2026-02-24, I burned through 10+ Opus sub-agents at 50-150K tokens each on tasks that were mostly pattern-following. This was expensive and unnecessary.
 - The model hierarchy we configured (gpt-5-mini default for sub-agents) exists for a reason. Only escalate when the task genuinely requires it.
 
+## Model Configuration SOP (canonical, 2026-02-24)
+- **Default:** `openrouter/openrouter/auto` (routes dynamically to cheapest capable model)
+- **Allowlist (3 models only):**
+  - `openrouter/openrouter/auto` (alias: auto) — default router
+  - `openrouter/openai/gpt-5-mini` (alias: mini) — cheap pinned workhorse
+  - `openrouter/minimax/minimax-m2.5` (alias: m2.5) — step-up for harder tasks
+- **Heartbeat:** gpt-5-mini
+- **Sub-agents:** auto (router picks), can be pinned to mini or m2.5 per task
+- **Removed:** Opus, Sonnet, GPT-5.2, GPT-5.2-pro, Gemini — no longer in allowlist
+- Noah approved this config on 2026-02-24. Do not add models back without his approval.
+
 ### Sub-Agent Task Quality
 - **NEVER paraphrase specs in sub-agent tasks.** Tell the sub-agent to READ the spec file directly. Example: "Read docs/specs/v3.md section 3.2 and implement everything listed."
 - Compressing spec into a summary loses critical detail. Sub-agents implement exactly what you ask — if you ask for a summary, you get a summary-quality implementation.
