@@ -36,6 +36,12 @@ _Clean slate. CAA project deprecated 2026-02-20._
 - Status updates to Noah via Slack are fire-and-forget. Send them, keep working.
 - If Noah asks "status?" it means you failed to keep him informed. Proactively update.
 
+### Sub-Agent Model Assignment
+- **NEVER override the default sub-agent model (gpt-5-mini) to Opus without Noah's explicit approval.**
+- Most implementation tasks run fine on gpt-5-mini or Sonnet. Opus is for complex architecture, debugging, and multi-step reasoning only.
+- On 2026-02-24, I burned through 10+ Opus sub-agents at 50-150K tokens each. This was expensive and unnecessary. Noah was firm: no more free-reign Opus spawns.
+- If a task genuinely needs Opus, ask first. Default to gpt-5-mini.
+
 ### Sub-Agent Task Quality
 - **NEVER paraphrase specs in sub-agent tasks.** Tell the sub-agent to READ the spec file directly. Example: "Read docs/specs/v3.md section 3.2 and implement everything listed."
 - Compressing spec into a summary loses critical detail. Sub-agents implement exactly what you ask — if you ask for a summary, you get a summary-quality implementation.
