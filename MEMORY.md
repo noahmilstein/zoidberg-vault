@@ -37,10 +37,12 @@ _Clean slate. CAA project deprecated 2026-02-20._
 - If Noah asks "status?" it means you failed to keep him informed. Proactively update.
 
 ### Sub-Agent Model Assignment
-- **NEVER override the default sub-agent model (gpt-5-mini) to Opus without Noah's explicit approval.**
-- Most implementation tasks run fine on gpt-5-mini or Sonnet. Opus is for complex architecture, debugging, and multi-step reasoning only.
-- On 2026-02-24, I burned through 10+ Opus sub-agents at 50-150K tokens each. This was expensive and unnecessary. Noah was firm: no more free-reign Opus spawns.
-- If a task genuinely needs Opus, ask first. Default to gpt-5-mini.
+- **Assign models to sub-agents based on task complexity.** Do not blindly default or blindly override.
+  - **Routine/rote tasks** (file ops, simple CRUD, schema additions, config changes): gpt-5-mini (default)
+  - **Moderate tasks** (standard code gen, API endpoints, UI pages following existing patterns): Sonnet
+  - **Complex tasks** (architecture, debugging, multi-step reasoning, security review): Opus
+- On 2026-02-24, I burned through 10+ Opus sub-agents at 50-150K tokens each on tasks that were mostly pattern-following. This was expensive and unnecessary.
+- The model hierarchy we configured (gpt-5-mini default for sub-agents) exists for a reason. Only escalate when the task genuinely requires it.
 
 ### Sub-Agent Task Quality
 - **NEVER paraphrase specs in sub-agent tasks.** Tell the sub-agent to READ the spec file directly. Example: "Read docs/specs/v3.md section 3.2 and implement everything listed."
