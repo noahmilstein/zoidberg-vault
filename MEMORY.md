@@ -45,9 +45,26 @@ _Clean slate. CAA project deprecated 2026-02-20._
 - The model hierarchy we configured (gpt-5-mini default for sub-agents) exists for a reason. Only escalate when the task genuinely requires it.
 
 ## Model Configuration SOP (canonical, 2026-02-24)
-- **Default:** `openrouter/openrouter/auto` (routes dynamically to cheapest capable model)
-- **Allowlist (3 models only):**
-  - `openrouter/openrouter/auto` (alias: auto) — default router
+
+### Supervisor / Orchestrator + Workers Architecture (2026-02-24)
+- **Orchestrator:** `openai/gpt-5.2-chat` — plans, delegates, assembles final responses, maintains voice consistency
+- **Workers:** OpenRouter models
+  - Drafting/rewriting: `openrouter/minimax/minimax-m2.5` (alias: m2.5)
+  - Summarization/extraction: `openrouter/openai/gpt-5-mini` (alias: mini)
+  - Classification/tagging: `openrouter/openai/gpt-5-mini`
+  - Research synthesis: `openrouter/minimax/minimax-m2.5`
+- **Delegation rules:**
+  - Orchestrator writes directly for short responses (<500 words) requiring voice consistency
+  - Orchestrator delegates to workers for bulk text, extraction, classification
+  - Workers never talk to humans directly — all output flows through orchestrator
+- **Cost controls:**
+  - Max 1 worker retry per task; fail fast to human otherwise
+  - Short orchestrator outputs (planning + routing + final assembly)
+  - Worker output length caps defined in task prompts
+- **Config:** `maxSpawnDepth: 2` enables orchestrator pattern (main → orchestrator sub-agent → worker)
+
+### Legacy Model Config (deprecated)
+- **Default:** `openrouter/openrouter/auto` (deprecated as of 2026-02-24)
   - `openrouter/openai/gpt-5-mini` (alias: mini) — cheap pinned workhorse
   - `openrouter/minimax/minimax-m2.5` (alias: m2.5) — step-up for harder tasks
 - **Heartbeat:** gpt-5-mini

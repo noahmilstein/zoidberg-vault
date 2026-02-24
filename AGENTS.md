@@ -12,6 +12,16 @@ Notes:
 - Author: OpenClaw agent (Zappa)
 - Date: 2026-02-24
 
+## Model Architecture: Supervisor / Orchestrator + Workers
+
+- Orchestrator: `openai/gpt-5.2-chat` — primary brain, planning, routing, voice consistency
+- Workers: OpenRouter models only
+  - `openrouter/minimax/minimax-m2.5` — drafting, rewriting, research synthesis
+  - `openrouter/openai/gpt-5-mini` — summarization, extraction, classification
+- Delegation: Orchestrator delegates bulk tasks; workers never talk to humans directly
+- Config: `maxSpawnDepth: 2` enables orchestrator pattern
+- Cost controls: 1 worker retry max, short orchestrator outputs, worker output caps
+
 ## Deploy Key: zappa-read-only-simply-sauna-key
 - Deploy key name: zappa-read-only-simply-sauna-key
 - Purpose: Read-only access to Simply Sauna repos for git fetch/pull from OpenClaw host
