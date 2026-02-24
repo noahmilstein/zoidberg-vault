@@ -7,7 +7,7 @@
 - **IP:** 46.225.127.41
 - **Disk:** 75G total, ~68G free
 - **Node:** v22.22.0
-- **OpenClaw:** v2026.2.21-2 (systemd user service)
+- **OpenClaw:** v2026.2.22-2 (systemd user service)
 
 ## SSH
 
