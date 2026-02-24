@@ -36,5 +36,10 @@ _Clean slate. CAA project deprecated 2026-02-20._
 - Status updates to Noah via Slack are fire-and-forget. Send them, keep working.
 - If Noah asks "status?" it means you failed to keep him informed. Proactively update.
 
+### Sub-Agent Task Quality
+- **NEVER paraphrase specs in sub-agent tasks.** Tell the sub-agent to READ the spec file directly. Example: "Read docs/specs/v3.md section 3.2 and implement everything listed."
+- Compressing spec into a summary loses critical detail. Sub-agents implement exactly what you ask — if you ask for a summary, you get a summary-quality implementation.
+- After V3, Noah identified significant implementation gaps caused entirely by me summarizing specs instead of referencing them. This rule prevents that from ever happening again.
+
 ### Why This Matters
 - Noah had to prompt me 4+ times on 2026-02-23/24 to resume work and update tickets. This is unacceptable. These rules exist to prevent that from ever happening again.
