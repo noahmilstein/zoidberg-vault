@@ -49,5 +49,10 @@ _Clean slate. CAA project deprecated 2026-02-20._
 - Compressing spec into a summary loses critical detail. Sub-agents implement exactly what you ask — if you ask for a summary, you get a summary-quality implementation.
 - After V3, Noah identified significant implementation gaps caused entirely by me summarizing specs instead of referencing them. This rule prevents that from ever happening again.
 
+### Bug Reports — Verify, Don't Deflect
+- When Noah reports something isn't working, VERIFY IT END-TO-END. Do not explain why it "should" work.
+- On 2026-02-24, Noah reported 3+ times that projects weren't showing on task detail pages. Each time I deflected: "data is correct," "Vercel hasn't deployed," "run convex deploy." The actual problem was incomplete UI implementation — I never checked the rendered output.
+- Correct response: "Let me check the actual UI and fix it." Not "the backend is fine."
+
 ### Why This Matters
 - Noah had to prompt me 4+ times on 2026-02-23/24 to resume work and update tickets. This is unacceptable. These rules exist to prevent that from ever happening again.
