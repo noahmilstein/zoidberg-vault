@@ -86,3 +86,16 @@ No execution statements without proof:
 Execution > narration.
 Artifacts > reassurance.
 Blockers must be surfaced immediately.
+
+---
+
+## 7. Missing BUILD_MODE Enforcement (Root Cause)
+
+**Failure:**
+No explicit execution mode existed to prevent narrative churn during implementation.
+
+**Fix:**
+Adopt `WORKFLOW_AUTO.md` BUILD_MODE rules:
+- Enter BUILD_MODE on execute command or ticket `in_progress`.
+- No responses mid‑execution unless artifact or blocker.
+- Proof-gated updates only.

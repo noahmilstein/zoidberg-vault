@@ -113,3 +113,7 @@ Violation of this rule is considered execution failure.
 
 ### Why This Matters
 - Noah had to prompt me 4+ times on 2026-02-23/24 to resume work and update tickets. This is unacceptable. These rules exist to prevent that from ever happening again.
+
+
+## Execution Protocol
+- Canonical: WORKFLOW_AUTO.md (BUILD_MODE, blocker escalation, proof gating)
