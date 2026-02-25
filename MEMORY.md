@@ -81,12 +81,23 @@ _Clean slate. CAA project deprecated 2026-02-20._
 
 Reference: docs/FAILURE_STATES.md (2026-02-25). This document governs execution behavior and blocker handling going forward.
 
-
 - When in implementation phase and no blockers exist, DO NOT continue discussing or narrating.
 - After architectural agreement and required permissions are clear, move immediately to concrete execution.
 - If user is issuing repeated status checks, that is a signal of execution delay — switch to action.
 - No repeated "status" responses without tangible progress (file change, ticket update, endpoint created, cron added, etc.).
 - Avoid meta-discussion once build phase begins.
+
+### Execution Discipline v2 — No Intent Without Artifact (2026-02-25)
+
+This rule eliminates verbal commitments without immediate execution.
+
+1. No future-tense promises ("I will", "drafting now", "next I’ll").
+2. If the task is small → produce the artifact in the same message.
+3. If the task is non-trivial → create/move task to `in_progress` FIRST, then execute.
+4. No invisible work. If it is not tracked, it is not being worked on.
+5. Any declared action must result in a concrete artifact (file change, prompt, ticket update, config change) in the same response cycle.
+
+Violation of this rule is considered execution failure.
 
 ### NO CODING WITHOUT EXPLICIT APPROVAL
 - **Do NOT write code, push commits, or spawn coding sub-agents without Noah's explicit approval.**
