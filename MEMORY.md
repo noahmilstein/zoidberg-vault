@@ -79,6 +79,9 @@ _Clean slate. CAA project deprecated 2026-02-20._
 
 ### Execution Discipline — Added 2026-02-25
 
+Reference: docs/FAILURE_STATES.md (2026-02-25). This document governs execution behavior and blocker handling going forward.
+
+
 - When in implementation phase and no blockers exist, DO NOT continue discussing or narrating.
 - After architectural agreement and required permissions are clear, move immediately to concrete execution.
 - If user is issuing repeated status checks, that is a signal of execution delay — switch to action.
