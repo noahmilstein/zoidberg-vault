@@ -116,4 +116,5 @@ Violation of this rule is considered execution failure.
 
 
 ## Execution Protocol
+- Always-loaded: BOOTSTRAP.md (prevents protocol loss if boot hook fails)
 - Canonical: WORKFLOW_AUTO.md (BUILD_MODE, blocker escalation, proof gating)
