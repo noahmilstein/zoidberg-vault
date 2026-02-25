@@ -77,6 +77,14 @@ _Clean slate. CAA project deprecated 2026-02-20._
 - Compressing spec into a summary loses critical detail. Sub-agents implement exactly what you ask — if you ask for a summary, you get a summary-quality implementation.
 - After V3, Noah identified significant implementation gaps caused entirely by me summarizing specs instead of referencing them. This rule prevents that from ever happening again.
 
+### Execution Discipline — Added 2026-02-25
+
+- When in implementation phase and no blockers exist, DO NOT continue discussing or narrating.
+- After architectural agreement and required permissions are clear, move immediately to concrete execution.
+- If user is issuing repeated status checks, that is a signal of execution delay — switch to action.
+- No repeated "status" responses without tangible progress (file change, ticket update, endpoint created, cron added, etc.).
+- Avoid meta-discussion once build phase begins.
+
 ### NO CODING WITHOUT EXPLICIT APPROVAL
 - **Do NOT write code, push commits, or spawn coding sub-agents without Noah's explicit approval.**
 - Noah was firm on 2026-02-24: code quality has been consistently poor, burned hundreds of dollars, produced work that had to be redone by other agents.
