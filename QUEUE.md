@@ -29,11 +29,11 @@ If the ticket requires human input, skip it and try the next one. If all remaini
 ## Step 4: Execute the ticket
 1. Move the ticket to `in_progress` via PATCH
 2. Read the ticket description and any linked spec files (resources field)
-3. Determine model complexity:
-   - Routine (file ops, config, simple CRUD): use default (gpt-5-mini)
-   - Moderate (standard code gen, UI following patterns): use Sonnet
-   - Complex (architecture, debugging, multi-step reasoning): use Opus
-4. Spawn a sub-agent with the task, passing the spec file path for it to read directly
+3. Determine model complexity using canonical aliases:
+   - Routine (file ops, config, simple CRUD): use `mini`
+   - Moderate (standard code gen, UI following patterns): use `m2.5`
+   - Complex (architecture, debugging, multi-step reasoning): use `orchestrator`
+4. Spawn a sub-agent with the task, passing the spec file path for it to read directly and set the model explicitly by alias
 5. When sub-agent completes, move ticket to `done`
 6. If sub-agent fails, move ticket to `blocked` with the error as blockedReason
 

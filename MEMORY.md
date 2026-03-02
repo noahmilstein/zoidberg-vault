@@ -1,5 +1,7 @@
 # MEMORY.md
 
+Last reviewed: 2026-03-02
+
 ## Durable Preferences & Facts
 
 - Primary branch: `master` (never `main`).

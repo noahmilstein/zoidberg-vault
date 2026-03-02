@@ -32,7 +32,7 @@
 ## CAA (CtrlAltAgnt)
 
 - **API Base:** `https://polished-opossum-635.convex.site`
-- **API Key:** `5c34492531f38e471c1ffb89159ebbd1daf1203f2fc0eaf3ca50422eea19367a`
+- **API Key:** `<stored in local secret/env; redacted from repo>`
 - **Auth:** `Authorization: Bearer <API_KEY>`
 - **App URL:** `https://ctrlaltagnt.vercel.app`
 - **Repo:** `github.com/noahmilstein/ctrlaltagnt` (SSH: `github.com-caa`, key: `~/.ssh/id_ed25519_caa`)
