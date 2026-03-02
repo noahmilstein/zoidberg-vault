@@ -1,6 +1,6 @@
-# CAA-0068 — Instantly Campaign Architecture (Paused)
+# CAA-0068 — Instantly Campaign Architecture (Blocked — Launch-Gated)
 
-Status: in progress  
+Status: blocked  
 Execution mode: preconfigure now, keep sending disabled until warmup + health gate pass.
 
 ## Objective

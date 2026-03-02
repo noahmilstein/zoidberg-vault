@@ -1,5 +1,7 @@
 # CAA-0067 — Lead Sourcing + Enrichment Spec (No-New-Spend)
 
+Status: done
+
 ## Goal
 Produce sufficient US-only lead volume for listing-stager cold outreach using existing resources only: Instantly, Zillow, Google Maps, and Brave search.
 
