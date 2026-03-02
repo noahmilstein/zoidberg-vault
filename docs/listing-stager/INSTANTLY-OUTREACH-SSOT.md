@@ -14,6 +14,10 @@ Objective: complete the Listing Stager Instantly outreach workstream end-to-end 
 6. **CAA-0069** — cron automation staging + SOP/SOT hardening (blocked by CAA-0068 launch gate)
    - Artifact: `docs/listing-stager/CAA-0069-cron-automation-staging-sop-sot.md`
 
+## Execution Assets
+- Policy runbook: `docs/listing-stager/LISTING-STAGER-OUTREACH-RUNBOOK.md`
+- Execution skill: `skills/listing-stager-outreach-execution/SKILL.md`
+
 ## Non-Negotiable Continuity Rules
 - Treat this file as SSOT index for campaign implementation continuity.
 - Do not invent metrics or performance claims.
