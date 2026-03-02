@@ -8,13 +8,13 @@ Frequency: Weekly (via existing `weekly-architecture-md-antipattern-audit` cron)
 Prevent documentation drift, conflicting control-plane guidance, and stale/unsafe content in workspace markdown.
 
 ## Scope
-- Root markdown control files (`BOOTSTRAP.md`, `BOOT.md`, `WORKFLOW_AUTO.md`, `MEMORY.md`, `AGENTS.md`, `SOUL.md`, `USER.md`, `QUEUE.md`, `TOOLS.md`)
+- Root markdown control files (`BOOTSTRAP.md`, `MEMORY.md`, `AGENTS.md`, `SOUL.md`, `USER.md`, `QUEUE.md`, `TOOLS.md`, `CAA-V0-SPEC.md` when present)
 - `docs/**/*.md` (active docs only; exclude `archive/`)
 
 ## Audit Checks (required)
 1. **Protocol consistency**
    - `BOOTSTRAP.md` remains canonical behavior protocol
-   - Pointer files (`BOOT.md`, `WORKFLOW_AUTO.md`) do not duplicate full protocol text
+   - No duplicate/legacy protocol files remain in root unless explicitly required
 2. **Model alias consistency**
    - No references to non-canonical model ladders in active execution docs
    - Queue/runtime docs use current aliases (`orchestrator`, `m2.5`, `mini`) or explicit provider IDs

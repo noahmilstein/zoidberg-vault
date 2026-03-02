@@ -53,6 +53,4 @@ This file is loaded into context on startup. It exists to prevent protocol loss 
 
 ## Source of truth
 - Canonical protocol: `BOOTSTRAP.md` (this file; always loaded)
-- Compatibility pointer: `WORKFLOW_AUTO.md`
 - Failure catalog: `docs/FAILURE_STATES.md`
-- Boot runner (best-effort): `BOOT.md` via `boot-md` hook

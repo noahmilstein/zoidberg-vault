@@ -13,7 +13,8 @@ Produce a reliable, low-risk docs audit that:
 
 ## Scope
 - Include: `/root/.openclaw/workspace/docs/**/*.md`
-- Include control files when relevant: `/root/.openclaw/workspace/{BOOTSTRAP.md,WORKFLOW_AUTO.md,MEMORY.md,AGENTS.md,TOOLS.md}`
+- Include root markdowns: `/root/.openclaw/workspace/*.md`
+- Include control files when relevant: `/root/.openclaw/workspace/{BOOTSTRAP.md,MEMORY.md,AGENTS.md,TOOLS.md,HEARTBEAT.md}`
 - Exclude generated/vendor folders and non-markdown files.
 
 ## Operating mode
