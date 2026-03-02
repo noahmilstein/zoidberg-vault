@@ -14,7 +14,7 @@ Notes:
 
 ## Model Architecture: Supervisor / Orchestrator + Workers
 
-- Orchestrator: `openai/gpt-5.2-chat` — primary brain, planning, routing, voice consistency
+- Orchestrator: `openrouter/openai/gpt-5.2-chat` (`orchestrator`) — primary brain, planning, routing, voice consistency
 - Workers: OpenRouter models only
   - `openrouter/minimax/minimax-m2.5` — drafting, rewriting, research synthesis
   - `openrouter/openai/gpt-5-mini` — summarization, extraction, classification

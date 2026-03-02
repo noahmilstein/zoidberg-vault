@@ -95,7 +95,5 @@ Blockers must be surfaced immediately.
 No explicit execution mode existed to prevent narrative churn during implementation.
 
 **Fix:**
-Adopt `WORKFLOW_AUTO.md` BUILD_MODE rules:
-- Enter BUILD_MODE on execute command or ticket `in_progress`.
-- No responses mid‑execution unless artifact or blocker.
-- Proof-gated updates only.
+Protocol is canonical in `BOOTSTRAP.md` and detailed in `WORKFLOW_AUTO.md`.
+This file intentionally avoids restating those rules to prevent drift.

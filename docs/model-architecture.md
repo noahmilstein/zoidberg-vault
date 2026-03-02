@@ -6,7 +6,7 @@
 
 | Role | Model | What it does | What it does NOT do |
 |------|-------|-------------|-------------------|
-| **Orchestrator** | `openai/gpt-5.2-chat` | Plans, decomposes tasks, routes to workers, enforces constraints, composes final human-facing response, maintains voice consistency | Generate bulk text, do heavy research synthesis, or run repetitive extraction |
+| **Orchestrator** | `openrouter/openai/gpt-5.2-chat` | Plans, decomposes tasks, routes to workers, enforces constraints, composes final human-facing response, maintains voice consistency | Generate bulk text, do heavy research synthesis, or run repetitive extraction |
 | **Worker A** (drafting/rewriting) | `openrouter/minimax/minimax-m2.5` | Drafts long-form text, rewrites content, produces bulk output | Make routing decisions, talk to humans directly |
 | **Worker B** (summarization/extraction) | `openrouter/openai/gpt-5-mini` | Summarizes docs, extracts action items, parses structured data | Planning, voice/tone decisions |
 | **Worker C** (classification/tagging) | `openrouter/openai/gpt-5-mini` | Labels, categorizes, tags, triages | Long-form generation |
@@ -24,7 +24,7 @@
 
 | Tier | Model ID | Alias | Role | Cost Profile |
 |------|----------|-------|------|-------------|
-| Orchestrator | `openai/gpt-5.2-chat` | `orchestrator` | Primary brain, planning, routing, final assembly | Premium (but short outputs) |
+| Orchestrator | `openrouter/openai/gpt-5.2-chat` | `orchestrator` | Primary brain, planning, routing, final assembly | Premium (but short outputs) |
 | Worker | `openrouter/minimax/minimax-m2.5` | `m2.5` | Drafting, rewriting, research synthesis | Cheap |
 | Worker | `openrouter/openai/gpt-5-mini` | `mini` | Summarization, extraction, classification, tagging | Cheapest |
 | Heartbeat | `openrouter/openai/gpt-5-mini` | `mini` | Periodic checks | Cheapest |
@@ -62,17 +62,16 @@
 ```json
 {
   "env": {
-    "OPENROUTER_API_KEY": "<existing-key>",
-    "OPENAI_API_KEY": "<openai-api-key-required>"
+    "OPENROUTER_API_KEY": "${ENV_OPENROUTER_API_KEY}"
   },
   "agents": {
     "defaults": {
       "model": {
-        "primary": "openai/gpt-5.2-chat",
+        "primary": "openrouter/openai/gpt-5.2-chat",
         "fallbacks": ["openrouter/minimax/minimax-m2.5"]
       },
       "models": {
-        "openai/gpt-5.2-chat": {
+        "openrouter/openai/gpt-5.2-chat": {
           "alias": "orchestrator"
         },
         "openrouter/minimax/minimax-m2.5": {
@@ -100,22 +99,22 @@
 
 ### How it works
 
-- **Main session** (human-facing chat): runs on `openai/gpt-5.2-chat` (orchestrator). This is the brain that plans, routes, and assembles final responses.
+- **Main session** (human-facing chat): runs on `openrouter/openai/gpt-5.2-chat` (orchestrator). This is the brain that plans, routes, and assembles final responses.
 - **Sub-agents** (workers): default to `openrouter/openai/gpt-5-mini`. When spawning, orchestrator can override per-task with `model: "openrouter/minimax/minimax-m2.5"` for drafting/research tasks.
 - **`maxSpawnDepth: 2`**: enables the orchestrator pattern. Main → orchestrator sub-agent → worker sub-sub-agents. Per OpenClaw docs: depth-1 gets `sessions_spawn` + `subagents` tools; depth-2 is leaf (no further spawning).
 - **Heartbeats**: cheap model (`gpt-5-mini`) for periodic checks.
-- **Fallback**: if `openai/gpt-5.2-chat` fails, falls back to `minimax-m2.5` (degraded but functional).
+- **Fallback**: if `openrouter/openai/gpt-5.2-chat` fails, falls back to `minimax-m2.5` (degraded but functional).
 
 ### Auth requirement
 
-OpenAI direct API key is required for `openai/gpt-5.2-chat`. This is NOT routed through OpenRouter — it hits OpenAI directly via the `openai` provider prefix.
+Canonical policy: prefer aliases (`orchestrator`, `m2.5`, `mini`) in prose and tasks. When an explicit provider/model ID is required, use OpenRouter IDs (for example `openrouter/openai/gpt-5.2-chat`) unless a direct-provider requirement is intentionally configured.
 
 ```bash
-openclaw onboard --openai-api-key "$OPENAI_API_KEY"
-# or add to openclaw.json env block
+openclaw onboard --openrouter-api-key "$OPENROUTER_API_KEY"
+# or add to openclaw.json env block / external secret store
 ```
 
-Source: [OpenClaw OpenAI provider docs](/usr/lib/node_modules/openclaw/docs/providers/openai.md)
+Source: OpenClaw model/provider docs (use configured provider aliases and allowlisted IDs).
 
 ---
 
@@ -166,7 +165,7 @@ Orchestrator (assembles):
 
 | Current | New |
 |---------|-----|
-| `openrouter/auto` as primary (cheap router, inconsistent model) | `openai/gpt-5.2-chat` as orchestrator (consistent, high-fidelity) |
+| `openrouter/auto` as primary (cheap router, inconsistent model) | `openrouter/openai/gpt-5.2-chat` as orchestrator (consistent, high-fidelity) |
 | Workers default to `openrouter/auto` (unpredictable) | Workers pinned to `gpt-5-mini` or `m2.5` (predictable, cheap) |
 | No formal orchestrator/worker separation | Explicit role separation with routing rules |
 | `maxSpawnDepth: 1` (flat) | `maxSpawnDepth: 2` (orchestrator pattern enabled) |
@@ -177,11 +176,11 @@ Orchestrator (assembles):
 
 ## Next Actions
 
-1. **Obtain OpenAI API key** for direct `openai/gpt-5.2-chat` access (not OpenRouter-routed). Add to `openclaw.json` env block or run `openclaw onboard --openai-api-key`.
+1. **Confirm OpenRouter credentials** are provided via secret store/env and not tracked in repo; keep model usage on OpenRouter IDs + aliases.
 2. **Apply config changes** to `/root/.openclaw/openclaw.json` per the snippet in Section 4.
 3. **Restart gateway**: `openclaw gateway restart`
-4. **Verify model resolution**: `openclaw models status` — confirm primary shows `openai/gpt-5.2-chat`.
+4. **Verify model resolution**: `openclaw models status` — confirm primary alias resolves to `orchestrator` (`openrouter/openai/gpt-5.2-chat`).
 5. **Test sub-agent spawn**: send a test task via Slack DM, confirm worker spawns on `gpt-5-mini` and orchestrator assembles.
 6. **Update MEMORY.md** with new model architecture (replace old Model Configuration SOP section).
-7. **Update TOOLS.md** with OpenAI API key reference and new model ladder.
+7. **Update TOOLS.md** with secret-store/env guidance and canonical model ladder aliases.
 8. **Delete old model config references** in MEMORY.md (the `openrouter/openrouter/auto` section is now obsolete).

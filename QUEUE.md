@@ -5,14 +5,14 @@ When you receive a queue processing trigger, follow these steps exactly:
 ## Step 1: Check for in-progress work
 ```
 GET https://polished-opossum-635.convex.site/tasks?status=in_progress
-Authorization: Bearer <CAA_API_KEY from TOOLS.md>
+Authorization: Bearer ${ENV_CAA_API_KEY}
 ```
 If any tasks are in_progress, STOP. Do not start new work while something is running. Reply with: "Queue check: [N] tasks in progress. Skipping."
 
 ## Step 2: Find next backlog ticket
 ```
 GET https://polished-opossum-635.convex.site/tasks?status=backlog
-Authorization: Bearer <CAA_API_KEY from TOOLS.md>
+Authorization: Bearer ${ENV_CAA_API_KEY}
 ```
 Sort by priority (urgent > high > medium > low). Pick the first one.
 

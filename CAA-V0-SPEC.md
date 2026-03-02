@@ -85,7 +85,7 @@ All endpoints live at the HTTP actions URL. Auth via a shared API key in the `Au
 ### Example: Create Task
 ```json
 POST /tasks
-Authorization: Bearer <API_KEY>
+Authorization: Bearer ${ENV_CAA_API_KEY}
 Content-Type: application/json
 
 {
@@ -101,7 +101,7 @@ Content-Type: application/json
 ### Example: Update Status
 ```json
 PATCH /tasks/<id>
-Authorization: Bearer <API_KEY>
+Authorization: Bearer ${ENV_CAA_API_KEY}
 Content-Type: application/json
 
 {
