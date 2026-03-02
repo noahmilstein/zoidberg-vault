@@ -11,9 +11,6 @@ Use this skill to execute the Listing Stager outreach workflow deterministically
 
 Read these before acting:
 - `/root/.openclaw/workspace/docs/listing-stager/INSTANTLY-OUTREACH-SSOT.md`
-- `/root/.openclaw/workspace/docs/listing-stager/CAA-0067-lead-sourcing-enrichment-spec.md`
-- `/root/.openclaw/workspace/docs/listing-stager/CAA-0068-instantly-campaign-architecture.md`
-- `/root/.openclaw/workspace/docs/listing-stager/CAA-0069-cron-automation-staging-sop-sot.md`
 - `/root/.openclaw/workspace/docs/listing-stager/LISTING-STAGER-OUTREACH-RUNBOOK.md`
 
 ## Operating contract
