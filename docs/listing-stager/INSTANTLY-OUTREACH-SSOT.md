@@ -2,17 +2,15 @@
 
 Objective: complete the Listing Stager Instantly outreach workstream end-to-end with durable continuity across CAA tickets.
 
-## Ticket Chain
-1. **CAA-0064** — lock strategy (positioning, wedges, offers, KPIs)
-   - Artifact: `docs/listing-stager/CAA-0064-strategy.md`
-2. **CAA-0065** — draft/approve 12-email sequence pack
-   - Artifact: `docs/listing-stager/CAA-0065-email-sequences.md`
-3. **CAA-0066** — assemble wedge-specific proof assets
-   - Artifact: `docs/listing-stager/CAA-0066-proof-pack.md`
-4. **CAA-0067** — lead sourcing + enrichment spec
-5. **CAA-0068** — Instantly campaign architecture (**blocked — launch-gated**)
-6. **CAA-0069** — cron automation staging + SOP/SOT hardening (blocked by CAA-0068 launch gate)
-   - Artifact: `docs/listing-stager/CAA-0069-cron-automation-staging-sop-sot.md`
+## Ticket Chain (system of record = CAA)
+1. **CAA-0064** — strategy lock
+2. **CAA-0065** — 12-email sequence pack
+3. **CAA-0066** — wedge proof assets
+4. **CAA-0067** — lead sourcing + enrichment
+5. **CAA-0068** — campaign architecture (launch-gated)
+6. **CAA-0069** — automation staging + governance
+
+Historical ticket details live in CAA/Convex, not repo markdown.
 
 ## Execution Assets
 - Policy runbook: `docs/listing-stager/LISTING-STAGER-OUTREACH-RUNBOOK.md`
@@ -26,10 +24,10 @@ Objective: complete the Listing Stager Instantly outreach workstream end-to-end 
 - Every ticket output must produce a file artifact under `docs/listing-stager/`.
 
 ## Current Status Snapshot
-- CAA-0064: Done (strategy doc present)
-- CAA-0065: Done (email pack present)
-- CAA-0066: Done (proof pack present)
-- CAA-0067: Done (lead sourcing + enrichment spec present)
+- CAA-0064: Done
+- CAA-0065: Done
+- CAA-0066: Done
+- CAA-0067: Done
 - CAA-0068: Blocked (launch-gated; not complete)
 - CAA-0069: Blocked (dependency: CAA-0068 launch gate / warmup)
 

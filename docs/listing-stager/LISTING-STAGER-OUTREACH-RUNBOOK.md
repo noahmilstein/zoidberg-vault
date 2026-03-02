@@ -15,10 +15,9 @@ Single policy/control runbook for Listing Stager outreach operations. This file 
 ## Source hierarchy
 1. `docs/listing-stager/INSTANTLY-OUTREACH-SSOT.md` (program index)
 2. This runbook (policy + controls)
-3. Execution docs:
-   - `CAA-0067-lead-sourcing-enrichment-spec.md`
-   - `CAA-0068-instantly-campaign-architecture.md`
-   - `CAA-0069-cron-automation-staging-sop-sot.md`
+3. CAA/Convex tickets (historical detail and audit trail)
+
+Note: older CAA markdown artifacts were moved to `docs/archive/listing-stager/` for lightweight local reference only.
 
 ## Launch gate (must all pass)
 1. Warmup complete for participating inboxes

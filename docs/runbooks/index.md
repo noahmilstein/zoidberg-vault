@@ -6,9 +6,7 @@
 - `../listing-stager/LISTING-STAGER-OUTREACH-RUNBOOK.md` — listing-stager outreach policy and controls
 
 ## Audit Reports (historical)
-- `architecture-audit-20260226T210140Z.md`
-- `architecture-audit-20260302T150000Z.md`
-- `content-hygiene-audit-20260302T0316Z.md`
+Moved to: `../archive/runbooks/`
 
 Naming convention for future audits:
 - `architecture-audit-<UTC timestamp>.md`
