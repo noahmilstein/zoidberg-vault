@@ -1,5 +1,12 @@
 # TOOLS.md - Local Notes
 
+## Secrets Storage (Canonical "Where")
+
+- **SSH private keys:** `~/.ssh/` with `chmod 600` (example: `~/.ssh/id_ed25519_simplysauna`)
+- **Runtime API secrets for apps/agents:** environment variables at runtime (do not store raw values in markdown/docs)
+- **Config references:** use env-style placeholders in docs (example: `${ENV_OPENROUTER_API_KEY}`), not literal keys
+- **Repo policy:** no raw secret values committed to git-tracked files
+
 ## Host
 
 - **Hostname:** zoidberg-crab-shell
