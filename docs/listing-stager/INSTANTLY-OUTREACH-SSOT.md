@@ -25,3 +25,12 @@ Objective: complete the Listing Stager Instantly outreach workstream end-to-end 
 - CAA-0065: Completed draft (email pack present)
 - CAA-0066: Completed draft v1 (proof pack present)
 - CAA-0067+: Pending
+
+## Activation Defaults (Locked 2026-03-02)
+- Warmed inbox inventory (aliases):
+  - agents@listingstagerpro.com
+  - brokerages@listingstagerpro.com
+  - media@listingstagerpro.com
+- Sending timezone baseline: EST / America/New_York.
+- Webhook decision rule: no webhook is required to launch outbound. Only configure webhook forwarding when a concrete consumer endpoint is declared and tested.
+- Reply-owner decision rule: Instantly assignment settings are the execution source of truth; this file mirrors those settings for continuity.

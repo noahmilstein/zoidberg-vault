@@ -115,11 +115,19 @@ If any gate fails, campaigns remain paused.
 - CAA-0066 proof pack: complete
 - CAA-0067 lead sourcing/enrichment spec: required before final lead import
 
-## Open Inputs Needed from Noah (to finalize execution runbook)
-1. Exact warmed inbox inventory + aliases
-2. Preferred sending timezone/window
-3. Webhook destination(s) for event forwarding
-4. Reply owner mapping per inbox
+## Inputs Resolved (2026-03-02)
+1. Warmed inbox inventory
+   - agents@listingstagerpro.com
+   - brokerages@listingstagerpro.com
+   - media@listingstagerpro.com
+2. Timezone baseline
+   - EST / America/New_York
+3. Webhook decision policy
+   - No webhook required for initial launch.
+   - Add webhook only when a concrete downstream consumer endpoint is selected and test-validated.
+4. Reply owner mapping policy
+   - Instantly account assignment settings are the execution source of truth.
+   - This doc + SSOT mirror those settings for continuity.
 
 ## Done Criteria for CAA-0068
 - Campaign architecture doc completed
