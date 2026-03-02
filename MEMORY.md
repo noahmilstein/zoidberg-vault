@@ -14,6 +14,7 @@ Last reviewed: 2026-03-02
 - Prioritize concrete execution over narration.
 - For reminders or recurring checks, prefer explicit automation with logs and rollback.
 - Keep one active policy/control plane in workspace root; archive duplicates.
+- Reliability kernel is canonical in `BOOTSTRAP.md` (atomic units, 60s first-output, proof-or-blocker, WIP=1, preflight gate).
 
 ## Historical Notes
 

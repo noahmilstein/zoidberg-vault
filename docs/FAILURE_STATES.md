@@ -1,99 +1,61 @@
-# FAILURE_STATES.md — Critical Behavioral Failures (2026-02-25)
+# FAILURE_STATES.md — Anti-Stall Failure Catalog
 
-This document records systemic execution failures that must NEVER recur.
+Purpose: define known reliability failure modes and mandated countermeasures.
 
----
+## F1: Silent RUNNING
+- Symptom: task marked in-progress but no user-visible output.
+- Prevention:
+  - 60-second first-output rule.
+  - Atomic unit size (2–8 min).
+- Detection:
+  - Missed first-output deadline.
+- Response:
+  - Emit BLOCKER immediately with NEED/UNBLOCKS.
 
-## 1. Unreported Blocker
+## F2: Ambiguous task shape
+- Symptom: broad request leads to planning loops and no concrete action.
+- Prevention:
+  - Preflight gate (binary success + artifact target required).
+  - Auto-split into atomic units before RUNNING.
+- Detection:
+  - Cannot define artifact target in preflight.
+- Response:
+  - BLOCKER requesting only missing data.
 
-**Failure:**
-Hesitation or uncertainty slowed execution but was not surfaced immediately.
+## F3: Intent-only replies
+- Symptom: “working on it” without artifact.
+- Prevention:
+  - Proof gating hard rule.
+- Detection:
+  - Any intent phrase without attached artifact.
+- Response:
+  - Corrective re-send as PROOF or BLOCKER.
 
-**Rule:**
-If I cannot take concrete action within 60 seconds due to uncertainty, I must:
-- Explicitly state the blocker.
-- State exactly what input/permission is required.
-- Pause until resolved.
+## F4: Concurrent-context thrash
+- Symptom: multiple parallel asks reduce execution throughput and cause misses.
+- Prevention:
+  - WIP limit = 1 execution stream.
+  - Queue remaining work until PROOF/BLOCKER boundary.
+- Detection:
+  - Multiple active RUNNING items.
+- Response:
+  - Demote extras to queue and acknowledge order.
 
----
+## F5: Hidden dependency blocker
+- Symptom: work cannot proceed due to missing access/input but no escalation.
+- Prevention:
+  - 60-second blocker escalation rule.
+- Detection:
+  - Next concrete action unavailable within 60s.
+- Response:
+  - BLOCKER format with exact NEED and UNBLOCKS.
 
-## 2. Reactive Context Switching
-
-**Failure:**
-Responded to repeated status checks instead of finishing atomic work units.
-
-**Rule:**
-Work in uninterrupted execution blocks.
-No mid‑execution responses unless a blocker exists.
-Status updates only after artifact creation.
-
----
-
-## 3. Execution Without Integration Plan
-
-**Failure:**
-Started implementation (webhook stub) before defining full integration path.
-
-**Rule:**
-Before touching files:
-- Define data flow.
-- Define API endpoints to call.
-- Define auth method.
-- Define completion criteria.
-Then execute.
-
----
-
-## 4. Ticket State Drift
-
-**Failure:**
-Implementation began without moving CAA tickets to `in_progress` immediately.
-
-**Rule:**
-Ticket state change is FIRST action in execution phase.
-
----
-
-## 5. Failure to Delegate
-
-**Failure:**
-Did not draft coding-agent prompt for Simply Sauna integration clarity.
-
-**Rule:**
-If Simply Sauna code surface is involved:
-- Draft coding-agent prompt immediately.
-- Await merged code before proceeding.
-
----
-
-## 6. False Progress Signals
-
-**Failure:**
-Said "executing" without producing artifacts.
-
-**Rule:**
-No execution statements without proof:
-- File path
-- PID
-- Diff
-- Ticket update
-- Endpoint confirmation
-
----
-
-## Enforcement Principle
-
-Execution > narration.
-Artifacts > reassurance.
-Blockers must be surfaced immediately.
-
----
-
-## 7. Missing BUILD_MODE Enforcement (Root Cause)
-
-**Failure:**
-No explicit execution mode existed to prevent narrative churn during implementation.
-
-**Fix:**
-Protocol is canonical in `BOOTSTRAP.md` and detailed in `WORKFLOW_AUTO.md`.
-This file intentionally avoids restating those rules to prevent drift.
+## F6: Protocol drift via file proliferation
+- Symptom: multiple policy files conflict and get ignored.
+- Prevention:
+  - Single canonical control-plane file: `BOOTSTRAP.md`.
+  - Pointer-only compatibility files; no duplicate policy logic elsewhere.
+- Detection:
+  - Rules diverge across files.
+- Response:
+  - Consolidate into BOOTSTRAP.md; reduce others to pointers/reference.
