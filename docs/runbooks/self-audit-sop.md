@@ -8,8 +8,9 @@ Frequency: Weekly (via existing `weekly-architecture-md-antipattern-audit` cron)
 Prevent documentation drift, conflicting control-plane guidance, and stale/unsafe content in workspace markdown.
 
 ## Scope
-- Root markdown control files (`BOOTSTRAP.md`, `MEMORY.md`, `AGENTS.md`, `SOUL.md`, `USER.md`, `QUEUE.md`, `TOOLS.md`, `CAA-V0-SPEC.md` when present)
+- Root markdown control files (`BOOTSTRAP.md`, `MEMORY.md`, `AGENTS.md`, `SOUL.md`, `USER.md`, `QUEUE.md`, `TOOLS.md`, `HEARTBEAT.md`)
 - `docs/**/*.md` (active docs only; exclude `archive/`)
+- Runtime reliability surface: heartbeat cadence, cron delivery health, and alert-target consistency for critical jobs
 
 ## Audit Checks (required)
 1. **Protocol consistency**
@@ -27,10 +28,15 @@ Prevent documentation drift, conflicting control-plane guidance, and stale/unsaf
 5. **CAA doc integrity**
    - `docs/caa-0040-index.md` links remain valid and ordered
    - Execution artifacts map cleanly: architecture → plan → KPI template → cadence SOP → weekly snapshot → experiment register
+6. **Runtime reliability checks**
+   - Heartbeat interval is appropriate for continuity goals (target <=15m when continuity monitoring is active)
+   - Critical cron jobs use explicit delivery target (Slack DM `user:U0AFCAZF601`) instead of `last`
+   - No critical cron has unresolved repeated delivery failures (`lastDeliveryStatus != delivered` or consecutiveErrors > 0)
+   - If failures exist, report exact job IDs and remediation patch
 
 ## Severity Levels
-- **High:** contradictions that can change runtime behavior, unsafe secret exposure
-- **Medium:** duplication, stale guidance, broken indexes/references
+- **High:** contradictions that can change runtime behavior, unsafe secret exposure, broken critical alert delivery
+- **Medium:** duplication, stale guidance, broken indexes/references, heartbeat/cron reliability drift
 - **Low:** formatting, readability, non-blocking structure issues
 
 ## Output Requirements

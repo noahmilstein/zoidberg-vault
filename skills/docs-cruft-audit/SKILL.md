@@ -40,6 +40,10 @@ Produce a reliable, low-risk docs audit that:
 4. **Risk checks**
    - Ensure proposed cleanup does not break active cron payload references.
    - Ensure skills and active docs do not reference files proposed for deletion.
+   - Audit runtime reliability surface:
+     - heartbeat cadence suitability for continuity goals,
+     - critical cron delivery target consistency (avoid `channel:last` for critical alerts),
+     - repeated cron delivery failures requiring escalation.
 
 5. **Output report**
    - Write: `docs/runbooks/cruft-audit-<UTC timestamp>.md`
