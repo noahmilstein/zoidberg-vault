@@ -13,6 +13,7 @@ Objective: complete the Listing Stager Instantly outreach workstream end-to-end 
 Historical ticket details live in CAA/Convex, not repo markdown.
 
 ## Execution Assets
+- Canonical SOP: `docs/listing-stager/EXECUTION-SOP.md`
 - Policy runbook: `docs/listing-stager/LISTING-STAGER-OUTREACH-RUNBOOK.md`
 - Execution skill: `skills/listing-stager-outreach-execution/SKILL.md`
 
