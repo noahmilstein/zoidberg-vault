@@ -1,6 +1,6 @@
 # MEMORY.md
 
-Last reviewed: 2026-03-02
+Last reviewed: 2026-03-18
 
 ## Durable Preferences & Facts
 
@@ -8,6 +8,7 @@ Last reviewed: 2026-03-02
 - Name the instance **Zoidberg** in internal references to avoid confusion with OpenClaw project naming.
 - Noah prefers direct, concise responses with no fluff.
 - No code changes without explicit Noah approval.
+- QMD is adopted as a memory enhancement layer (local retrieval accelerator), while `MEMORY.md` + `memory/*.md` remain canonical durable memory.
 
 ## Durable Operating Constraints
 
